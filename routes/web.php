@@ -24,3 +24,7 @@ Route::get('/openBlog','PageController@openBlog');
 Route::get('/oneblog','PageController@oneblog');
 
 Route::get('/login','PageController@login');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
