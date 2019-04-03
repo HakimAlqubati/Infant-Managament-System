@@ -1,7 +1,8 @@
 <?php
 
 namespace App;
-
+use App\Activity;
+use App\Center;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,7 +17,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name','last_name','email',
+        'address','phone', 'password','center_id',
     ];
 
     /**
@@ -36,4 +38,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function activity()
+    {
+        return $this->hasMany(Activity::class);
+    }
+    public function center()
+    {
+        return $this->belongsTo(Center::class);
+    }
 }

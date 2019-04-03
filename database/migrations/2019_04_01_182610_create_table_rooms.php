@@ -16,10 +16,13 @@ class CreateTableRooms extends Migration
         Schema::create('Rooms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('center_id')->unsigned()->index();
-         //  $table->foreign('center_id')->references()->on('Center')->onDelete('cascade');
+            $table->unsignedBigInteger('center_id');
+          //  $table->integer('center_id')->unsigned()->index();
             $table->string('desc');
+            
             $table->timestamps();   
+            $table->foreign('center_id')->references('id')->on('Center')->onDelete('cascade');
+
         });
     }
 

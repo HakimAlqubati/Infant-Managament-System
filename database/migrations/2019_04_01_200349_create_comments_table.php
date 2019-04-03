@@ -15,16 +15,16 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('Comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->unsigned()->index();
+            $table->unsignedBigInteger('user_id');
             $table->string('email');
             $table->string('name_user');
             $table->text('body');
-            $table->integer('post_id')->unsigned()->index();
+            $table->unsignedBigInteger('post_id');
             $table->string('status');
             
-           // $table->foreign('user_id')->references()->on('Users')->onDelete('cascade');
-           // $table->foreign('post_id')->references()->on('Activities')->onDelete('cascade');
-           // $table->foreign('post_id')->references()->on('Story')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('post_id')->references('id')->on('Activities')->onDelete('cascade');
+           // $table->foreign('post_id')->references('id')->on('Story')->onDelete('cascade');
 
 
             

@@ -19,13 +19,14 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('email_verified_at')->nullable();
-            $table->string('password');
             $table->string('media')->nullable();
             $table->string('address');
             $table->integer('phone');
             $table->text('profile')->nullable();
-            $table->integer('center_id')->unsigned()->index();
-          //  $table->foreign('center_id')->references()->on('Center')->onDelete('cascade');
+            $table->string('password');
+
+
+           // $table->foreign('center_id')->references('id')->on('Center')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

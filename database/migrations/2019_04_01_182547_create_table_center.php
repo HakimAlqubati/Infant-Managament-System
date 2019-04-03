@@ -16,9 +16,9 @@ class CreateTableCenter extends Migration
         Schema::create('Center', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('addres');
+            $table->string('address');
             $table->string('email');
-            $table->string('phone');
+            $table->integer('phone');
             $table->string('media')->nullable();
             $table->string('profile')->nullable();
             $table->string('onwer_name');
@@ -28,6 +28,7 @@ class CreateTableCenter extends Migration
     }
 
     /**
+     * 
      * Reverse the migrations.
      *
      * @return void

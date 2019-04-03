@@ -20,8 +20,8 @@ class CreateChidernTable extends Migration
             $table->string('brith_day');
             $table->string('level_educ');
             $table->string('gender');
-           // $table->integer('center_id')->unsigned()->index();
-         //   $table->foreign('center_id')->references()->on('Users')->onDelete('cascade');
+        //    $table->unsignedBigInteger('center_id');
+          //  $table->foreign('center_id')->references('id')->on('Center')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateChidernTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Childern');
+        Schema::dropIfExists('Children');
     }
 }

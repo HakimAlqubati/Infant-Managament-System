@@ -21,8 +21,8 @@ class CreateRequestSystemTable extends Migration
             $table->integer('phone');
             $table->string('country');
             $table->string('city');
-            $table->integer('user_id')->unsigned()->index();
-           // $table->foreign('user_id')->references()->on('Users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
 
             $table->timestamps();

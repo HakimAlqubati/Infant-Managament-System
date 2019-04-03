@@ -26,14 +26,13 @@ class CreateEvaluationsTable extends Migration
             $table->string('responsive');
             $table->string('other');
 
-            $table->integer('child_id')->unsigned()->index();
-            $table->integer('center_id')->unsigned()->index();
-            $table->integer('created_by')->unsigned()->index();
+            $table->unsignedBigInteger('child_id');
+            $table->unsignedBigInteger('center_id');
+            $table->unsignedBigInteger('created_by');
 
-
-          //  $table->foreign('created_by')->references()->on('Users')->onDelete('cascade');
-           // $table->foreign('chid_id')->references()->on('Children')->onDelete('cascade');
-            //$table->foreign('center_id')->references()->on('Center')->onDelete('cascade');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+            //$table->foreign('chid_id')->references('id')->on('Children')->onDelete('cascade');
+            $table->foreign('center_id')->references('id')->on('Center')->onDelete('cascade');
 
 
 

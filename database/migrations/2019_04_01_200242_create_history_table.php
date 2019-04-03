@@ -14,11 +14,12 @@ class CreateHistoryTable extends Migration
     public function up()
     {
         Schema::create('History', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->integer('id');
             $table->string('status');
             $table->string('desc');
-            $table->integer('child_id')->unsingned()->index();
-         //   $table->foreign('child_id')->references()->on('Children')->onDelete('cascade');
+            $table->unsignedBigInteger('child_id');
+          //  $table->integer('child_id')->unsingned()->index();
+           // $table->foreign('child_id')->references('id')->on('Children')->onDelete('cascade');
 
             $table->timestamps();
         });

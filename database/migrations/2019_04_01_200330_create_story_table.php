@@ -18,11 +18,14 @@ class CreateStoryTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->string('image')->nullable();
-            $table->integer('center_id')->unsigned()->index();
-            $table->integer('created_by')->unsigned()->index(); 
+            $table->unsignedBigInteger('center_id');
+            $table->unsignedBigInteger('created_by');
+
+
+        
             
-        //  $table->foreign('center_id')->references()->on('Center')->onDelete('cascade');
-         //$table->foreign('created_by')->references()->on('Users')->onDelete('cascade');
+            $table->foreign('center_id')->references('id')->on('Center')->onDelete('cascade');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });
