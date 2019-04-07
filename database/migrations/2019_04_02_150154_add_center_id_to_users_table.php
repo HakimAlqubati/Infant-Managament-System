@@ -13,11 +13,11 @@ class AddCenterIdToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('center_id');
+        //Schema::table('users', function (Blueprint $table) {
 
-           $table->foreign('center_id')->references('id')->on('Center')->onDelete('cascade');
-        });
+
+          // $table->foreign('center_id')->references('id')->on('Center')->onDelete('cascade');
+       // });
     }
 
     /**

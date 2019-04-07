@@ -20,8 +20,8 @@ class CreateChidernTable extends Migration
             $table->string('brith_day');
             $table->string('level_educ');
             $table->string('gender');
-        //    $table->unsignedBigInteger('center_id');
-          //  $table->foreign('center_id')->references('id')->on('Center')->onDelete('cascade');
+            $table->unsignedBigInteger('center_id');
+            $table->foreign('center_id')->references('id')->on('Center')->onDelete('cascade');
             $table->timestamps();
         });
     }

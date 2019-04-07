@@ -13,7 +13,7 @@ class CreateTableCenter extends Migration
      */
     public function up()
     {
-        Schema::create('Center', function (Blueprint $table) {
+      Schema::create('Center', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('address');

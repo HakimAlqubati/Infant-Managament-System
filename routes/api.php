@@ -17,4 +17,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/users','UsersController');
+//center::
+Route::apiResource('/center','CenterController');
+
+
+Route::group(['prefix'=>'center'],function()
+{
+    Route::apiResource('/{center}/users','UsersController');
+    Route::apiResource('/{center}/child', 'ChildrenController');
+
+});
+
+
+
+
+//showing users according center_id:
+
+//child
+//Route::apiResource('/child', 'ChildrenController');
+

@@ -6,18 +6,34 @@ use App\Center;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens,Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+//    public function isAdmin()
+//    {
+//        foreach ($this->roles()->get() as $role)
+//        {
+//            if ($role->name == 'Admin')
+//            {
+//                return true;
+//            }
+//        }
+//    }
+    public function children()
+    {
+        return $this->belongsToMany(User::class, 'parentchildren');
+    }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_users');
+    }
+
+
     protected $fillable = [
-        'first_name','last_name','email',
+        'first_name','last_name','email','media', 'profile',
         'address','phone', 'password','center_id',
     ];
 
@@ -42,7 +58,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Activity::class);
     }
-    public function center()
+    public function centers()
     {
         return $this->belongsTo(Center::class);
     }

@@ -25,8 +25,9 @@ class CreateUsersTable extends Migration
             $table->text('profile')->nullable();
             $table->string('password');
 
+          $table->unsignedBigInteger('center_id');
 
-           // $table->foreign('center_id')->references('id')->on('Center')->onDelete('cascade');
+            $table->foreign('center_id')->references('id')->on('center')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

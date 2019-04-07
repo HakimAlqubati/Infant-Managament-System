@@ -10,16 +10,31 @@
                     <div class="card-body justify-content-center">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
-                            <input id="center_id" type="hidden" class="form-control" value="DB:table('center)->get('id')">
-                            <div class="form-group row">
-                                <div class="col-md-8">
-                                    <input id="first_name" type="text" placeholder="Firsr Name" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" required autofocus>
 
-                                    @if ($errors->has('first_name'))
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('first_name') }}</strong>
-                                    </span>
-                                    @endif
+                            <div class="form-group row">
+
+                                <div class="col-md-8">
+                                        <?php
+                                        $centers =\App\Center::all();
+                                        ?>
+                                            <select id="center_id" class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}" onchange="document.getElementById('center_id').submit()"
+                                                    name="center_id" required>
+                                                <option  value="">Select Center:</option>
+
+                                            @foreach ($centers as $center)
+                                                <option  value="{{  $center->id }}">{{  $center->name }}</option>
+                                            @endforeach
+
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+
+                                <div class="col-md-8">
+                                    <input id="first_name" placeholder="First Name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" required autofocus>
+
+
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -27,11 +42,7 @@
                                 <div class="col-md-8">
                                     <input id="last_name" placeholder="Last Name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" required autofocus>
 
-                                    @if ($errors->has('last_name'))
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('last_name') }}</strong>
-                                    </span>
-                                    @endif
+
                                 </div>
                             </div>
                             <div class="form-group row">
